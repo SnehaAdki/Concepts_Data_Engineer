@@ -1,21 +1,41 @@
-
-version: 2
-
-models:
-  - name: my_first_dbt_model
-    description: "A starter dbt model"
+models: 
+  - name: dim_movies
+    description: Dimension table for the cleaned movie metadata
     columns:
-      - name: id
-        description: "The primary key for this table"
-        data_tests:
+      - name: movie_id
+        description:  Primary key for r_movies
+        tests:
+          - not_null
           - unique
+      - name: movie_title
+        description: Hold movie title info
+        tests:
+          - not_null
+      - name: GENRES_ARRAY
+        description: Array form of generes
+        tests:
+          - not_null
+      - name: genres
+        description: raw string form of genere
+        tests:
           - not_null
 
-  - name: my_second_dbt_model
-    description: "A starter dbt model"
+  - name: dim_users
+    description: Dimension table for the cleaned users metadata
     columns:
-      - name: id
-        description: "The primary key for this table"
-        data_tests:
-          - unique
+      - name: user_id
+        description:  Primary key for r_movies
+        tests:
           - not_null
+  
+  - name: dim_genome_tags
+    description: Dimension table dimension genome tags
+    columns:
+      - name: tag_id
+        description:  Primary key for tags
+        tests:
+          - not_null
+      - name: tag_name
+        description:  Tag name for the tag tag_name
+
+     
