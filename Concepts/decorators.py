@@ -1,4 +1,4 @@
-import functools
+from functools import * 
 
 
 def greet(func):
@@ -31,7 +31,7 @@ greeting("Vijay")
 
 def param(num):
     def inner(fun):
-        @functools.wraps(fun)
+        @wraps(fun)
         def wrapper(param):
             if num%2 !=0:
                 return f" From odd param {num} as {fun(param)}"
