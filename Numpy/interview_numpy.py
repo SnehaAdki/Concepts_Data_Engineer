@@ -38,3 +38,16 @@ print(two_d1)
 
 # print(two_d +two_d1) # for addition r & c should be equal to another r & c
 print(two_d *two_d1) # c1 should be equal to r2 
+
+print("flatten.... from 1D -> 2D")
+one_dim = two_d1.flatten()
+print(one_dim)
+print(type(one_dim))
+
+
+print("flatten.... from 2D -> 1D")
+print(one_dim)
+two_di = one_dim.reshape(3,3)
+print(two_di)
+
+
