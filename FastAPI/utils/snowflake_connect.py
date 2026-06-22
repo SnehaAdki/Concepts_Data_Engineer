@@ -5,7 +5,8 @@ def create_snowflake_paramers():
     return{
         "account": "TDSRKPP-LR22208",
         "user": "SADKI",
-        "authenticator": "externalbrowser",
+        "password": "Sneha@123456789",
+        # "authenticator": "externalbrowser",
         "role": "ACCOUNTADMIN",
         "warehouse": "COMPUTE_WH",
         "database": "fastapi",
