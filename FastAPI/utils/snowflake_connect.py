@@ -1,4 +1,5 @@
 from snowflake.connector import connect
+from sqlalchemy import create_engine
 
 
 def create_snowflake_paramers():
@@ -18,4 +19,17 @@ def create_snowflake_connection():
     connection = connect(**params)
     return connection
 
+def create_snowflake_connection_sqlalchemy():
+        # Create SQLAlchemy engine for pandas
+    pswd = "Sneha@123456789"
+    from snowflake.sqlalchemy import URL
 
+    engine = create_engine(URL(
+        account="TDSRKPP-LR22208",
+        user="SADKI",
+        password=pswd,
+        database="FASTAPI",
+        schema="USERS_MODEL",
+        warehouse="COMPUTE_WH"
+    ))
+    return engine
