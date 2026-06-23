@@ -21,7 +21,7 @@ def get_engine_connection_sqlalcehmy():
         yield connection
     finally:
         print("Closing the connection")
-        connection.close()
+        # connection.close()
 
 
 def fetch_table_rows(connection, query: str):
@@ -77,8 +77,13 @@ def delete(id: int, snowflake_engin=Depends(get_engine_connection)):
     return {"id": id, "message": "Record deleted successfully.  "}
 
 
-@app.put("/{id}", status_code=201)
+@app.put("/update/{id}", status_code=200)
 def update(id: int, body=Body(), snowflake_engin=Depends(get_engine_connection)):
     print(f"Updating record with ID: {id}")
-    print(body)
-    return {"id": id, "body": body}
+    query = f"UPDATE users_model.users SET {body} WHERE user_id = {id}"
+
+    cursor = snowflake_engin.cursor()
+    cursor.execute(query)
+    snowflake_engin.commit()
+    breakpoint()
+    return {"id": id, "body": result}
